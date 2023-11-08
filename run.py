@@ -123,6 +123,7 @@ def main():
             num_proc=NUM_PREPROCESSING_WORKERS,
             remove_columns=eval_dataset.column_names
         )
+    print(eval_dataset_featurized)
 
     # Select the training configuration
     trainer_class = Trainer
