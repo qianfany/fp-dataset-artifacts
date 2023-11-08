@@ -114,7 +114,6 @@ def main():
         )
     if training_args.do_eval:
         eval_dataset = dataset[eval_split]
-        print(eval_dataset)
         if args.max_eval_samples:
             eval_dataset = eval_dataset.select(range(args.max_eval_samples))
         eval_dataset_featurized = eval_dataset.map(
@@ -123,7 +122,6 @@ def main():
             num_proc=NUM_PREPROCESSING_WORKERS,
             remove_columns=eval_dataset.column_names
         )
-    print(eval_dataset_featurized)
 
     # Select the training configuration
     trainer_class = Trainer
@@ -160,7 +158,6 @@ def main():
         tokenizer=tokenizer,
         compute_metrics=compute_metrics_and_store_predictions
     )
-    print(train_dataset)
     # Train and/or evaluate
     if training_args.do_train:
         trainer.train()
